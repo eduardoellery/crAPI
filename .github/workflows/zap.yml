@@ -1,19 +1,18 @@
 on: [push]
 
 jobs:
-	zap_scan:
-	runs-on: ubuntu—latest
-	name: Scan the webapplication
-	steps:
-		- name: Checkout
-			uses: actions/checkout@v2
-			with:
-				ref: master
+  zap_scan:
+  runs-on: ubuntu—latest
+  name: Scan the webapplication
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: master
     - name: ZAP Scan
       uses: zaproxy/action-baseline@0.5.0
-			with:
-				token: secrets.GITHUB_TOKEN
-				docker_name: 'owasp/zap2docker—stable'
-				target: 'http://ip172-18-0-107-cpr13v0l2o9000bt11ag-8000.direct.labs.play-with-docker.com/'
-				rules_file_name: '. zap/rules.tsv'
-				cmd_options: '-a'
+      with:
+        docker_name: 'owasp/zap2docker—stable'
+        target: 'http://ip172-18-0-107-cpr13v0l2o9000bt11ag-8000.direct.labs.play-with-docker.com/'
+        rules_file_name: '. zap/rules.tsv'
+        cmd_options: '-a'
