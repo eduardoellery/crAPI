@@ -1,3 +1,4 @@
+name: zap
 on:
   push:
     branches: [ "main" ]
