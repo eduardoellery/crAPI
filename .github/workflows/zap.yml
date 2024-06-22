@@ -1,0 +1,14 @@
+name: zap
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ "master" ]
+  schedule:
+    - cron: '35 22 * * 1'
+steps:
+  - name: ZAP Scan
+    uses: zaproxy/action-baseline@v0.12.0
+    with:
+      target: 'http://ip172-18-0-107-cpr13v0l2o9000bt11ag-8000.direct.labs.play-with-docker.com/'
