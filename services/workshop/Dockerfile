@@ -12,7 +12,7 @@
 # limitations under the License.
 
 
-FROM python:3.10-alpine as build
+FROM python:3.12.0a1-alpine as build
 # Not using alpine based on suggestion
 # https://pythonspeed.com/articles/alpine-docker-python/
 
@@ -33,7 +33,7 @@ WORKDIR /app
 COPY ./ /app
 RUN pip install wheel && pip wheel . --wheel-dir /app/wheels
 
-FROM python:3.10-alpine
+FROM python:3.12.0a1-alpine
 COPY --from=build /app /app
 WORKDIR /app
 RUN apk update && apk add --no-cache postgresql-libs curl
